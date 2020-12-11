@@ -5,11 +5,9 @@ import (
 	"fmt"
 	"github.com/docker/go-units"
 	"github.com/elastic/go-sysinfo"
-	ffi "github.com/filecoin-project/filecoin-ffi"
 	"github.com/hashicorp/consul/api"
 	"golang.org/x/xerrors"
 	"os"
-	"strings"
 	"time"
 )
 
@@ -74,7 +72,6 @@ func (s *ServiceDiscovery) ServiceRegistr() error {
 		HTTP:                           fmt.Sprintf("http://%s:%d/%s", s.ListenAddr, s.ListenPort, s.EndPoint), // grpc 支持，执行健康检查的地址，service 会传到 Health.Check 函数中
 		DeregisterCriticalServiceAfter: deRegister.String(),                                                    // 注销时间，相当于过期时间
 		//Status:                         "passing",
-
 	}
 
 	mate := map[string]string{}
@@ -85,11 +82,6 @@ func (s *ServiceDiscovery) ServiceRegistr() error {
 	}
 	mate["hostname"] = hostname
 
-	gpus, err := ffi.GetGPUDevices()
-	if err != nil {
-		return xerrors.Errorf("getting gpu devices failed: %+v", err)
-	}
-	mate["gpus"] = strings.Join(gpus, ",")
 	h, err := sysinfo.Host()
 	if err != nil {
 		return xerrors.Errorf("getting host info: %w", err)

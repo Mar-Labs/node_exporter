@@ -35,4 +35,6 @@ dependencies-stamp
 # Test files extracted from ttar
 collector/fixtures/sys/
 
+node_exporter
+
 /vendor

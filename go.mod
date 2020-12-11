@@ -6,7 +6,6 @@ require (
 	github.com/docker/go-units v0.4.0
 	github.com/elastic/go-sysinfo v1.4.0
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00
-	github.com/filecoin-project/filecoin-ffi v0.30.3
 	github.com/go-kit/kit v0.10.0
 	github.com/godbus/dbus v0.0.0-20190402143921-271e53dc4968
 	github.com/hashicorp/consul/api v1.3.0
