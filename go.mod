@@ -3,9 +3,13 @@ module github.com/prometheus/node_exporter
 require (
 	github.com/beevik/ntp v0.3.0
 	github.com/coreos/go-systemd v0.0.0-20191104093116-d3cd4ed1dbcf
+	github.com/docker/go-units v0.4.0
+	github.com/elastic/go-sysinfo v1.4.0
 	github.com/ema/qdisc v0.0.0-20200603082823-62d0308e3e00
+	github.com/filecoin-project/filecoin-ffi v0.30.3
 	github.com/go-kit/kit v0.10.0
 	github.com/godbus/dbus v0.0.0-20190402143921-271e53dc4968
+	github.com/hashicorp/consul/api v1.3.0
 	github.com/hodgesds/perf-utils v0.0.8
 	github.com/lufia/iostat v1.1.0
 	github.com/mattn/go-xmlrpc v0.0.3
@@ -25,6 +29,7 @@ require (
 	golang.org/x/sync v0.0.0-20200317015054-43a5402ce75a // indirect
 	golang.org/x/sys v0.0.0-20200922070232-aee5d888a860
 	golang.org/x/tools v0.0.0-20200513201620-d5fe73897c97 // indirect
+	golang.org/x/xerrors v0.0.0-20191204190536-9bdfabe68543
 	gopkg.in/alecthomas/kingpin.v2 v2.2.6
 	gopkg.in/yaml.v2 v2.3.0
 	honnef.co/go/tools v0.0.1-2020.1.3 // indirect

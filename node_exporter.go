@@ -15,13 +15,12 @@ package main
 
 import (
 	"fmt"
+	"github.com/prometheus/common/promlog"
+	"github.com/prometheus/common/promlog/flag"
 	"net/http"
 	_ "net/http/pprof"
 	"os"
 	"sort"
-
-	"github.com/prometheus/common/promlog"
-	"github.com/prometheus/common/promlog/flag"
 
 	"github.com/go-kit/kit/log"
 	"github.com/go-kit/kit/log/level"
@@ -162,6 +161,16 @@ func main() {
 			"web.config",
 			"[EXPERIMENTAL] Path to config yaml file that can enable TLS or authentication.",
 		).Default("").String()
+
+
+		consulAddress = kingpin.Flag(
+			"web.consul-address",
+			"consul address",
+		).Default(":9100").String()
+		serviceName = kingpin.Flag(
+			"web.service-name",
+			"service name",
+		).Default("node_exporter").String()
 	)
 
 	promlogConfig := &promlog.Config{}
@@ -187,6 +196,9 @@ func main() {
 			</body>
 			</html>`))
 	})
+
+
+	InitConsul(*consulAddress,*serviceName,*listenAddress)
 
 	level.Info(logger).Log("msg", "Listening on", "address", *listenAddress)
 	server := &http.Server{Addr: *listenAddress}
