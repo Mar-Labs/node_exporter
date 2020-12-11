@@ -27,7 +27,7 @@ func InitConsul(consulUrl, serviceName, ipPort string) {
 		os.Exit(1)
 	}
 
-	sd, err := consul.NewServiceDiscovery(serviceName, ip[0], uint64(port), 10, 1, "metrics", consulUrl)
+	sd, err := consul.NewServiceDiscovery(serviceName, ip[0], uint64(port), 10, 1, "ok", consulUrl)
 	if err != nil {
 		level.Error(logger).Log("consul new service discovery err: %v", err)
 		os.Exit(1)

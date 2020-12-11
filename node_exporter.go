@@ -196,6 +196,9 @@ func main() {
 			</body>
 			</html>`))
 	})
+	http.HandleFunc("/ok", func(w http.ResponseWriter, r *http.Request) {
+		w.Write([]byte("ok"))
+	})
 
 
 	InitConsul(*consulAddress,*serviceName,*listenAddress)
