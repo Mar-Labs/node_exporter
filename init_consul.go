@@ -10,7 +10,7 @@ import (
 	"github.com/go-kit/kit/log/level"
 )
 
-func InitConsul(consulUrl, serviceName, ipPort string) {
+func InitConsul(consulUrl, serviceName, ipPort string,deInterval uint64) {
 	promlogConfig := &promlog.Config{}
 
 	logger := promlog.New(promlogConfig)
@@ -27,7 +27,7 @@ func InitConsul(consulUrl, serviceName, ipPort string) {
 		os.Exit(1)
 	}
 
-	sd, err := consul.NewServiceDiscovery(serviceName, ip[0], uint64(port), 10, 10, "ok", consulUrl)
+	sd, err := consul.NewServiceDiscovery(serviceName, ip[0], uint64(port), 10, deInterval, "ok", consulUrl)
 	if err != nil {
 		level.Error(logger).Log("consul new service discovery err: %v", err)
 		os.Exit(1)

@@ -171,6 +171,11 @@ func main() {
 			"web.service-name",
 			"service name",
 		).Default("node_exporter").String()
+
+		consulInterval = kingpin.Flag(
+			"web.consul-interval",
+			"service name",
+		).Default("10").Uint64()
 	)
 
 	promlogConfig := &promlog.Config{}
@@ -201,7 +206,7 @@ func main() {
 	})
 
 
-	InitConsul(*consulAddress,*serviceName,*listenAddress)
+	InitConsul(*consulAddress,*serviceName,*listenAddress,*consulInterval)
 
 	level.Info(logger).Log("msg", "Listening on", "address", *listenAddress)
 	server := &http.Server{Addr: *listenAddress}
